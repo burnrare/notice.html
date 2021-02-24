@@ -1,5 +1,4 @@
-
-$(function($){
+$(document).ready(function () {
     const $notice = $(".notice");
     const $notice_ul = $notice.find("ul");
     const $notice_list = $notice.find("ul li");
@@ -49,27 +48,27 @@ $(function($){
                 top: "-=60px"
             }, 300)
         }
-    }); // 버튼 클릭 시 상하 이동
+    })
 
-    // 자동 스크롤링
     var scroll = function() {
         timer = setTimeout(function(){
-            $('#scroll li:first').animate({marginTop: '-=60px'}, 400, function(){
+            $('#scroll li:first').animate({marginTop: '-=60px'}, 300, function(){
             // 넘어가는 간격과 속도
                 $(this).detach().appendTo('ul#scroll').removeAttr('style');
+                
             });
             scroll();
         }, 2000);         
       };
-      $(document).on('click','.prev',function(){
-        $('#scroll li:last').hide().prependTo($('#scroll')).slideDown();
-        clearTimeout(timer);
-        scroll();
-      }); 
-      $(document).on('click','.next',function(){
-            $('#scroll li:first').animate( {marginTop: '+=60px'}, 300, function() {
+    //   $(document).on(function(){
+    //     $('#scroll li:last').hide().prependTo($('#scroll')).slideDown();
+    //     clearTimeout(timer);
+    //     scroll();
+    //   }); 
+      $(document).on(function(){
+            $('#scroll li:first').animate({marginTop: '+=60px'}, 300, function() {
             // 넘어가는 간격과 속도
-            $(this).detach().appendTo('ul#scroll').removeAttr('style');
+            $(this).detach().appendTo('ul#scroll').removeAttr('style')
             });
             clearTimeout(timer);
             scroll();
